@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="APP_WP.HelloPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:APP_WP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="48" VerticalAlignment="Top" Background="White">
+            <Button x:Name="hamburgerButton" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="SplitViewToggle_Click">
+                <TextBlock Text="&#xE700;" FontFamily="{ThemeResource SymbolThemeFontFamily}"/>
+            </Button>
+        </Grid>
+        <!-- 这个Frame用于显示子Page页面。 -->
+        <Frame x:Name="contentFrame" Grid.Row="1"/>
+
+        <SplitView x:Name="splitView" Grid.Row="1" IsPaneOpen="False" OpenPaneLength="300" CompactPaneLength="48" DisplayMode="Overlay" HorizontalContentAlignment="Stretch">
+
+            <SplitView.Pane>
+                <ListView ItemsSource="{x:Bind Path=NavLinks}" IsItemClickEnabled="True" ItemClick="NavLinkClick" SelectionMode="None" Margin="0,0,150,0"/>
+            </SplitView.Pane>
+        </SplitView>
+    </Grid>
+</Page>
